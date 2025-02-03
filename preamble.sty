@@ -1,0 +1,80 @@
+% LTeX: enabled=false
+\ProvidesPackage{preamble}[2023/05/01]
+
+% Typographci packages
+\usepackage{fontspec}
+\setmainfont{Liberation Serif}
+\setsansfont{Liberation Sans}
+\setmonofont{Liberation Mono}
+
+\usepackage[main=russian, english]{babel}
+
+\usepackage[a5paper]{geometry}
+
+\usepackage{
+	booktabs,
+	imakeidx,
+	microtype,
+	multirow,
+	subcaption,
+	tabularx,
+}
+\usepackage[colorlinks=true]{hyperref}
+
+\newcolumntype{L}{>{\raggedleft\arraybackslash}X}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+
+\makeindex
+
+% Math packages
+\usepackage{
+	amsfonts,
+	amsmath,
+	amssymb,
+	amsthm,
+	mathtools,
+	xfrac
+}
+\usepackage[framemethod=TikZ]{mdframed}
+
+\newcommand{\addsurroundtotheorem}[2]{
+	\surroundwithmdframed[
+		topline=false,
+		rightline=false,
+		bottomline=false,
+		leftline=true,
+		linecolor = #2,
+		linewidth = 2,
+	]{#1}
+}
+
+\addsurroundtotheorem{theorem}{green}
+\addsurroundtotheorem{proof}{blue}
+
+\DeclareMathOperator{\grad}{grad}
+\newtheorem{axiom}{Аксиома}[section]
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{example}{Пример}[section]
+
+\renewcommand\qedsymbol{$\blacktriangleleft$}
+
+% Graphics packages
+\usepackage{graphicx, pgfplots, tikz}
+\usepackage[dvipsnames]{xcolor}
+\usetikzlibrary{arrows.meta, decorations.markings}
+\tikzset{>=Stealth}
+\pgfplotsset{compat=1.18}
+
+% Additional packages
+\usepackage{
+	cancel,
+	csvsimple,
+	enumitem,
+	hyperref,
+	subcaption,
+}
+\usepackage[ddmmyyyy]{datetime}
+\renewcommand{\dateseparator}{.}
+
+% Commands
+\newcommand{\eval}[1]{\directlua{tex.print(#1)}}
