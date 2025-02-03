@@ -9,7 +9,7 @@
 
 \usepackage[main=russian, english]{babel}
 
-\usepackage[a5paper]{geometry}
+\usepackage[a4paper]{geometry}
 
 \usepackage{
 	booktabs,
@@ -48,13 +48,15 @@
 	]{#1}
 }
 
+\addsurroundtotheorem{definition}{orange}
 \addsurroundtotheorem{theorem}{green}
 \addsurroundtotheorem{proof}{blue}
 
 \DeclareMathOperator{\grad}{grad}
 \newtheorem{axiom}{Аксиома}[section]
-\newtheorem{theorem}{Теорема}[section]
+\newtheorem{definition}{Определение}[section]
 \newtheorem{example}{Пример}[section]
+\newtheorem{theorem}{Теорема}[section]
 
 \renewcommand\qedsymbol{$\blacktriangleleft$}
 
