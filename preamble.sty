@@ -9,15 +9,15 @@
 
 \usepackage[main=russian, english]{babel}
 
-\usepackage[a4paper]{geometry}
+\usepackage[a4paper, top=20mm,bottom=20mm,left=25mm,right=15mm]{geometry}
 
 \usepackage{
-	booktabs,
-	imakeidx,
-	microtype,
-	multirow,
-	subcaption,
-	tabularx,
+  booktabs,
+  imakeidx,
+  microtype,
+  multirow,
+  subcaption,
+  tabularx,
 }
 \usepackage[colorlinks=true]{hyperref}
 
@@ -28,52 +28,69 @@
 
 % Math packages
 \usepackage{
-	amsfonts,
-	amsmath,
-	amssymb,
-	amsthm,
-	mathtools,
-	xfrac
+  amsfonts,
+  amsmath,
+  amssymb,
+  amsthm,
+  mathtools,
+  xfrac
 }
 \usepackage[framemethod=TikZ]{mdframed}
 
 \newcommand{\addsurroundtotheorem}[2]{
-	\surroundwithmdframed[
-		topline=false,
-		rightline=false,
-		bottomline=false,
-		leftline=true,
-		linecolor = #2,
-		linewidth = 2,
-	]{#1}
+  \surroundwithmdframed[
+    topline=false,
+    rightline=false,
+    bottomline=false,
+    leftline=true,
+    linecolor = #2,
+    linewidth = 2,
+  ]{#1}
 }
 
+\addsurroundtotheorem{corollary}{magenta}
 \addsurroundtotheorem{definition}{orange}
-\addsurroundtotheorem{theorem}{green}
+\addsurroundtotheorem{lemma}{teal}
 \addsurroundtotheorem{proof}{blue}
+\addsurroundtotheorem{theorem}{green}
 
 \DeclareMathOperator{\grad}{grad}
 \newtheorem{axiom}{Аксиома}[section]
 \newtheorem{definition}{Определение}[section]
 \newtheorem{example}{Пример}[section]
 \newtheorem{theorem}{Теорема}[section]
+\newtheorem{corollary}{Замечание}[theorem]
+\newtheorem{lemma}{Лемма}[theorem]
 
 \renewcommand\qedsymbol{$\blacktriangleleft$}
 
 % Graphics packages
 \usepackage{graphicx, pgfplots, tikz}
 \usepackage[dvipsnames]{xcolor}
-\usetikzlibrary{arrows.meta, decorations.markings}
+\usetikzlibrary{
+  arrows.meta,
+  decorations.markings,
+  graphs,
+  patterns,
+  arrows.meta,
+  graphdrawing,
+  positioning,
+  3d,
+  intersections,
+  calc,
+  through,
+  backgrounds
+}
 \tikzset{>=Stealth}
 \pgfplotsset{compat=1.18}
 
 % Additional packages
 \usepackage{
-	cancel,
-	csvsimple,
-	enumitem,
-	hyperref,
-	subcaption,
+  cancel,
+  csvsimple,
+  enumitem,
+  hyperref,
+  subcaption,
 }
 \usepackage[ddmmyyyy]{datetime}
 \renewcommand{\dateseparator}{.}
