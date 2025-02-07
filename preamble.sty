@@ -8,6 +8,9 @@
 \setmonofont{Liberation Mono}
 
 \usepackage[main=russian, english]{babel}
+% \usepackage{polyglossia}
+% \setdefaultlanguage{russian}
+% \setotherlanguages{english}
 
 \usepackage[a5paper, top=20mm,bottom=25mm,left=5mm,right=10mm]{geometry}
 
@@ -21,11 +24,12 @@
 	tabularx,
 }
 \usepackage[colorlinks=true]{hyperref}
+\usepackage[dvipsnames]{xcolor}
 
 \newcolumntype{L}{>{\raggedleft\arraybackslash}X}
 \newcolumntype{C}{>{\centering\arraybackslash}X}
 
-\makeindex[intoc]
+\makeindex[intoc, options= -s ./style.ist]
 
 % Math packages
 \usepackage{
@@ -56,6 +60,8 @@
 \addsurroundtotheorem{theorem}{green}
 
 \DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\dive}{div}
+\DeclareMathOperator{\rot}{rot}
 \newtheorem{axiom}{Аксиома}[chapter]
 \newtheorem{definition}{Определение}[chapter]
 \newtheorem{example}{Пример}[chapter]
@@ -98,3 +104,4 @@
 
 % Commands
 \newcommand{\eval}[1]{\directlua{tex.print(#1)}}
+\renewcommand{\emph}[1]{\textcolor{blue}{\textit{#1}}}
