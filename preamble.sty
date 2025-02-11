@@ -24,7 +24,29 @@
 }
 \usepackage[colorlinks=true]{hyperref}
 \usepackage[dvipsnames]{xcolor}
-% \enabledarkmode
+\enabledarkmode
+
+% Colors
+\definecolor{blue}{HTML}{4671D5}
+\definecolor{cyan}{HTML}{A600A6}
+\definecolor{green}{HTML}{33CC33}
+\definecolor{orange}{HTML}{FFAA00}
+\definecolor{red}{HTML}{FF4040}
+
+\IfDarkModeTF{
+	\definecolor{bgcolor}{HTML}{293133}
+	\definecolor{fgcolor}{HTML}{FFFFFF}
+}{
+	\definecolor{bgcolor}{HTML}{FFFFFF}
+	\definecolor{fgcolor}{HTML}{293133}
+}
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=red,
+	filecolor=magenta,
+	urlcolor=cyan,
+}
 
 \newcolumntype{L}{>{\raggedleft\arraybackslash}X}
 \newcolumntype{C}{>{\centering\arraybackslash}X}
@@ -46,12 +68,21 @@
 \DeclareMathOperator{\dive}{div}
 \DeclareMathOperator{\rot}{rot}
 
-\declaretheorem[thmbox=M, name=Определение, numberwithin=chapter]{definition}
-\declaretheorem[thmbox=M, name=Аксиома, numberwithin=chapter]{axiom}
-\declaretheorem[thmbox=M, name=Пример, numberwithin=chapter]{example}
-\declaretheorem[thmbox=M, name=Теорема, numberwithin=chapter]{theorem}
-\declaretheorem[thmbox=M, name=Замечание, numberwithin=theorem]{corollary}
-\declaretheorem[thmbox=M, name=Лемма, numberwithin=theorem]{lemma}
+\theoremstyle{definition}
+\declaretheorem[shaded={bgcolor=bgcolor, rulecolor=orange,
+			rulewidth=2pt}, thmbox=M, name=Определение, numberwithin=chapter]{definition}
+\declaretheorem[shaded={bgcolor=bgcolor, rulecolor=cyan,
+			rulewidth=2pt}, thmbox=M, name=Пример, numberwithin=chapter]{example}
+\declaretheorem[shaded={bgcolor=bgcolor, rulecolor=green,
+			rulewidth=2pt}, thmbox=M, name=Теорема, numberwithin=chapter]{theorem}
+
+\theoremstyle{plain}
+\declaretheorem[shaded={bgcolor=bgcolor, rulecolor=red,
+			rulewidth=2pt}, thmbox=M, name=Замечание, numberwithin=theorem]{corollary}
+\declaretheorem[shaded={bgcolor=bgcolor, rulecolor=red,
+			rulewidth=2pt}, thmbox=M, name=Лемма, numberwithin=theorem]{lemma}
+\declaretheorem[shaded={bgcolor=bgcolor, rulecolor=red,
+			rulewidth=2pt}, thmbox=M, name=Аксиома, numberwithin=chapter]{axiom}
 
 \renewcommand\qedsymbol{$\blacktriangleleft$}
 
@@ -84,7 +115,6 @@
 	cancel,
 	csvsimple,
 	enumitem,
-	hyperref,
 	subcaption,
 }
 \usepackage[ddmmyyyy]{datetime}

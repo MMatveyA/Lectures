@@ -153,8 +153,8 @@
 систему координат. Положение точки можно задать радиус-вектором,
 проведённым из начала координат в конкретную точку.
 
-Радиус-вектор связан с координатами: \( \overline{r} = \overline{e_x} x
-+ \overline{e_y} y + \overline{e_z} z \), где $e$ --- единичные орты.
+Радиус-вектор связан с координатами: \( \vec{r} = \vec{e_x} x + \vec{e_y} y +
+\vec{e_z} z \), где $e$ --- единичные орты.
 
 Основной, но не единственной, задачей механики является нахождение
 радиус-вектора в любой момент $t$.
@@ -799,11 +799,15 @@ F_\text{упр} = - k \Delta x \).
 			\coordinate (dM) at (2, 6);
 
 			% Подшипники
-			\node[above right] (0, 1) {$z$};
-			\draw[pattern=north west lines] (0.1, 0) rectangle +(2, 0.25);
-			\draw[pattern=north west lines] (-0.1, 0) rectangle +(-2, 0.25);
-			\draw[pattern=north west lines] (0.1, 8) rectangle +(2, 0.25);
-			\draw[pattern=north west lines] (-0.1, 8) rectangle +(-2, 0.25);
+			\node[below right] (0, 1) {$z$};
+			\draw[pattern=north west lines, pattern color=fgcolor] (0.1, 0)
+			rectangle +(2, 0.25);
+			\draw[pattern=north west lines, pattern color=fgcolor] (-0.1,
+			0) rectangle +(-2, 0.25);
+			\draw[pattern=north west lines, pattern color=fgcolor] (0.1, 8)
+			rectangle +(2, 0.25);
+			\draw[pattern=north west lines, pattern color=fgcolor] (-0.1,
+			8) rectangle +(-2, 0.25);
 
 			\draw (0, 0) -- (0, 8.25);
 			\draw[] (O) ellipse (2 and 3);
@@ -1060,10 +1064,14 @@ $\Delta l_i$ можно рассчитать следующим образом: 
 \begin{figure}[!htbp]
 	\begin{center}
 		\begin{tikzpicture}[scale=0.5]
-			\draw[pattern=north east lines] (-0.1, -4) rectangle +(-1, -0.5);
-			\draw[pattern=north east lines] (0.1, -4) rectangle +(1, -0.5);
-			\draw[pattern=north east lines] (-0.1, 4) rectangle +(-1, 0.5);
-			\draw[pattern=north east lines] (0.1, 4) rectangle +(1, 0.5);
+			\draw[pattern=north east lines, pattern color=fgcolor] (-0.1,
+			-4) rectangle +(-1, -0.5);
+			\draw[pattern=north east lines, pattern color=fgcolor] (0.1,
+			-4) rectangle +(1, -0.5);
+			\draw[pattern=north east lines, pattern color=fgcolor] (-0.1,
+			4) rectangle +(-1, 0.5);
+			\draw[pattern=north east lines, pattern color=fgcolor] (0.1, 4)
+			rectangle +(1, 0.5);
 
 			\draw (0, -4.5) -- (0, 4.5);
 			\draw[->] (0, -4.5) -- (0, 4) node[below left] {$\vec{\omega}$};
@@ -1380,8 +1388,8 @@ $\Delta l_i$ можно рассчитать следующим образом: 
 		\begin{subfigure}{0.45\textwidth}
 			\begin{center}
 				\begin{tikzpicture}[scale=0.5]
-					\draw (0, 0) -- (7, 0) node[below left] {$t$};
-					\draw (0, -2) -- (0, 2) node[below left] {$A$};
+					\draw[axes] (0, 0) -- (7, 0) node[below left] {$t$};
+					\draw[axes] (0, -2) -- (0, 2) node[below left] {$A$};
 
 					\draw[domain=0:7] plot ({\x}, {sin(deg(\x))});
 				\end{tikzpicture}
@@ -1394,7 +1402,7 @@ $\Delta l_i$ можно рассчитать следующим образом: 
 				\begin{tikzpicture}[scale=0.5]
 					\newcommand{\angl}{45}
 					\draw(0, 0) -- +(5, 0);
-					\draw[->] (0, 0) -- node[sloped, above] {$\omega$} (\angl:4);
+					\draw[axes] (0, 0) -- node[sloped, above] {$\omega$} (\angl:4);
 					\draw (1, 0) arc (0:\angl:1) node[right] {$\varphi$};
 
 					\draw[->] (\angl:1.5) arc (\angl:265:1.5);
@@ -1484,9 +1492,8 @@ $\Delta l_i$ можно рассчитать следующим образом: 
 
 В результате сложения \[
 	\frac{x^2}{a^2 } + \frac{y^2}{b^2} - 2 \frac{x y}{a b} \cos{\omega} = \sin^2 w
-\] мы получаем уравнение эллипса. При это если $\sin \varphi$ равен $0$ или
-$\pi$, то в этом случае эллипс у нас вырождается в прямую. Соответственно мы
-имеем:
+\] мы получаем уравнение эллипса. При этом, если $\sin \varphi$ равен $0$ или
+$\pi$, то эллипс у нас вырождается в прямую. Соответственно мы имеем:
 
 \begin{figure}[!htbp]
 	\begin{center}

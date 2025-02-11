@@ -23,8 +23,6 @@
 
 \frontmatter
 \tableofcontents
-\newpage
-\listoftheorems
 
 \mainmatter
 
@@ -40,6 +38,7 @@
 \input{./parts/Электроника/main.tex}
 
 \backmatter
-\printindex
+\listoftheorems[title=Список теорем, ignoreall, onlynamed={theorem}]
+\listoftheorems[title=Список определений, ignoreall, onlynamed={definition}]
 
 \end{document}
