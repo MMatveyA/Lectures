@@ -8,23 +8,23 @@
 \setmonofont{Liberation Mono}
 
 \usepackage[main=russian, english]{babel}
-% \usepackage{polyglossia}
-% \setdefaultlanguage{russian}
-% \setotherlanguages{english}
 
 \usepackage[a5paper, top=20mm,bottom=25mm,left=5mm,right=10mm]{geometry}
 
 \usepackage{
 	booktabs,
+	darkmode,
 	imakeidx,
 	microtype,
 	multirow,
 	siunitx-ru,
 	subcaption,
 	tabularx,
+	xparse,
 }
 \usepackage[colorlinks=true]{hyperref}
 \usepackage[dvipsnames]{xcolor}
+% \enabledarkmode
 
 \newcolumntype{L}{>{\raggedleft\arraybackslash}X}
 \newcolumntype{C}{>{\centering\arraybackslash}X}
@@ -38,41 +38,25 @@
 	amssymb,
 	amsthm,
 	mathtools,
-	xfrac
+	xfrac,
+	thmtools,
 }
-\usepackage[framemethod=TikZ]{mdframed}
-
-\newcommand{\addsurroundtotheorem}[2]{
-	\surroundwithmdframed[
-		topline=false,
-		rightline=false,
-		bottomline=false,
-		leftline=true,
-		linecolor = #2,
-		linewidth = 3,
-	]{#1}
-}
-
-\addsurroundtotheorem{corollary}{magenta}
-\addsurroundtotheorem{definition}{orange}
-\addsurroundtotheorem{lemma}{teal}
-\addsurroundtotheorem{proof}{blue}
-\addsurroundtotheorem{theorem}{green}
 
 \DeclareMathOperator{\grad}{grad}
 \DeclareMathOperator{\dive}{div}
 \DeclareMathOperator{\rot}{rot}
-\newtheorem{axiom}{Аксиома}[chapter]
-\newtheorem{definition}{Определение}[chapter]
-\newtheorem{example}{Пример}[chapter]
-\newtheorem{theorem}{Теорема}[chapter]
-\newtheorem{corollary}{Замечание}[theorem]
-\newtheorem{lemma}{Лемма}[theorem]
+
+\declaretheorem[thmbox=M, name=Определение, numberwithin=chapter]{definition}
+\declaretheorem[thmbox=M, name=Аксиома, numberwithin=chapter]{axiom}
+\declaretheorem[thmbox=M, name=Пример, numberwithin=chapter]{example}
+\declaretheorem[thmbox=M, name=Теорема, numberwithin=chapter]{theorem}
+\declaretheorem[thmbox=M, name=Замечание, numberwithin=theorem]{corollary}
+\declaretheorem[thmbox=M, name=Лемма, numberwithin=theorem]{lemma}
 
 \renewcommand\qedsymbol{$\blacktriangleleft$}
 
 % Graphics packages
-\usepackage{graphicx, pgfplots, tikz}
+\usepackage{graphicx, pgfplots, tikz, tikz-3dplot}
 \usepackage[dvipsnames]{xcolor}
 \usetikzlibrary{
 	arrows.meta,
@@ -88,7 +72,11 @@
 	through,
 	backgrounds
 }
-\tikzset{>=Stealth}
+\tikzset{
+	>=Stealth,
+	axes/.style={->, thick},
+}
+\tdplotsetmaincoords{70}{110}
 \pgfplotsset{compat=1.18}
 
 % Additional packages
@@ -105,3 +93,19 @@
 % Commands
 \newcommand{\eval}[1]{\directlua{tex.print(#1)}}
 \renewcommand{\emph}[1]{\textcolor{blue}{\textit{#1}}}
+
+\NewDocumentCommand{\coordsystem}{s m m m m}{
+	\IfBooleanT{#1}{\draw[help lines] (#2, #3) grid (#4, #5);}
+
+	\draw[axes] (#2, 0) -- (#4, 0) node[below left] {$x$};
+	\draw[axes] (0, #3) -- (0, #5) node[below left] {$y$};
+	\node[below left] at (0, 0) {$O$};
+}
+\NewDocumentCommand{\coordsystemd}{m m m m m m}{
+	\draw[axes] (#1, 0, 0) -- (#4, 0, 0) node[below left] {$x$};
+	\draw[axes] (0, #2, 0) -- (0, #5, 0) node[below right] {$y$};
+	\draw[axes] (0, 0, #3) -- (0, 0, #6) node[above] {$z$};
+}
+\NewDocumentCommand{\test}{s >{\SplitList{,}}r() >{\SplitList{,}}r()}{
+	#1 \ProcessList{#2}{} #3
+}

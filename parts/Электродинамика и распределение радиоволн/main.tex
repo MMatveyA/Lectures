@@ -55,7 +55,7 @@
 Разность $F_n^\text{пр} - F_n^\text{лев}$ есть приращение.
 
 Поток вектора через любую замкнутую поверхность
-\[ \Phi = \sum_{}^{} d\Phi = \sum \dive \vec{F} dV. \]
+\[ \Phi = \sum_{}^{} d\Phi = \sum \vec{F} d\vec{V}. \]
 Поскольку изначально тот же поток $\Phi = \int_S \vec{F} d\vec{S}$.
 
 \[
@@ -69,19 +69,19 @@
 	d\vec{l} = \oint_l F_l dl. \]
 Если контур замкнут, то интеграл называется циркуляцией\index{Циркуляция}.
 
-\begin{figure}[htbp]
+\begin{figure}[!htbp]
 	\centering
-	\begin{tikzpicture}
+	\begin{tikzpicture}[tdplot_main_coords]
+		\coordsystemd{0}{0}{0}{3}{3}{3}
+
 		\draw (0, 0, 0) circle (2);
-		\draw[->] (0, 0, 0) -- (3, 0, 0) node[right] {$x$};
-		\draw[->] (0, 0, 0) -- (0, 3, 0) node[above] {$y$};
-		\draw[->] (0, 0, 0) -- (0, 0, 3) node[below] {$z$};
-		\draw[dashed] (-2, -2, 0) node[below left] {$A$} -- (2, -2, 0) node[below
-			right] {$B$} -- (2, 2, 0) node[above right] {$C$} -- (-2, 2, 0) node[above
-			left] {$D$} -- cycle;
+		\draw[dashed] (-2, -2, 0) node[above] {$A$} -- (2, -2, 0)
+		node[left] {$B$} -- (2, 2, 0) node[below] {$C$} -- (-2, 2, 0)
+		node[right] {$D$} -- cycle;
 	\end{tikzpicture}
 	\caption{<caption>}
 \end{figure}
+
 \[
 	dC = \oint_l F_L dl = F_x' \Delta x + F_y' \Delta y + F_z' \Delta z - F_x''
 	\Delta x - F_y'' \Delta y
